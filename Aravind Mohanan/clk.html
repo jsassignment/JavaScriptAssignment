@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+ <title>Date</title>
+ <script>
+ window.onload = function(){
+ document.getElementById("country").innerHTML = "India";
+ refresh();
+ }
+
+ let a,date,time;
+ const options = {
+ weekday:'long',year:'numeric',month:'long',day:'numeric',
+ hour:'numeric',minute:'numeric',second:'numeric'
+ };
+
+ const date_options = {
+ weekday:'long',year:'numeric',month:'long',day:'numeric'
+ };
+
+ const time_options = {
+ hour:'numeric',minute:'numeric',second:'numeric'
+ };
+
+ function refresh(){
+ var refresh=1000;
+ mytime=setTimeout('countryChange()',refresh)
+ }
+
+ var getTime = function timeValue(timezone){
+ options.timeZone = timezone;
+ current_date = new Date(); 
+ date = current_date.toLocaleDateString(undefined,options);
+ new_date= new Date(date); // Date & time based on timezone
+ date_format = new_date.toLocaleDateString(undefined,date_options);
+ time_format = new_date.toLocaleTimeString(undefined,time_options);
+ document.getElementById("time").innerHTML = time_format + "<br>on " + date_format;
+ document.getElementById("timezone").innerHTML = timezone;
+ }
+
+ function countryChange() {
+
+ var countryName = document.getElementById("countries").value;
+
+ if (countryName == "India"){
+ document.getElementById("country").innerHTML = countryName;
+ getTime("Asia/Kolkata");
+ }
+
+ else if (countryName == "Canada"){
+ document.getElementById("country").innerHTML = countryName;
+ getTime("America/New_York");
+ } 
+
+ else if (countryName == "Singapore"){
+ document.getElementById("country").innerHTML = countryName;
+ getTime("Australia/Sydney"); 
+ } 
+ 
+ else if (countryName == "London"){
+ document.getElementById("country").innerHTML = countryName;
+ getTime("Europe/London"); 
+ }
+
+ else if (countryName == "Africa"){
+ document.getElementById("country").innerHTML = countryName;
+ getTime("Africa/Cairo"); 
+ }
+
+ else{
+ document.getElementById("country").innerHTML = "India";
+ getTime("Asia/Kolkata");
+ } 
+ refresh(); 
+ }
+ </script>
+</head>
+<body class="bg-dark">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <div class="container">
+ <a class="navbar-brand" href="#"><i class="mdi mdi-home"></i> Time Zone</a>
+ <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+ <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarScroll">
+ <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+ <li class="nav-item">
+ <a class="nav-link active" aria-current="page" href="#">Home</a>
+ </li>
+ </ul>
+ <form class="d-flex">
+ <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+ <button class="btn btn-outline-primary" type="submit">Search</button>
+ </form>
+ </div>
+ </div>
+ </nav>
+ <div class="container mt-5 bg-dark text-white">
+ <div class="p-5">
+ <h2 class="display-4">
+ Current time on <span id ="country"></span> : <span id="time"></span>
+ </h2>
+ <p id="timezone"></p>
+ <hr class="my-4">
+ <p>We are here to show time of different countries.. You can select the country to view the time of different time zones.</p>
+ <div class="row">
+ <div class="col-md-6 position-relative">
+ <select class="form-select" id="countries" aria-label="Default select example" onchange=countryChange()>
+ <option selected>--Select Country--</option>
+ <option value="India">India</option>
+ <option value="Canada">Canada</option>
+ <option value="Singapore">Singapore</option>
+ <option value="London">London</option>
+ <option value="Africa">Africa</option>
+ </select>
+ </div>
+ <!-- <div class="col-md-6 position-relative">
+ <a class="btn btn-primary" href="#" role="button">Browse More</a>
+ </div> -->
+ </div>
+ </div>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
