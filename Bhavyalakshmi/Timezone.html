@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Time Zone</title>
+    <script>
+        // let a;
+        // let date;
+        // let time;
+        // const timeoption = {weekday:'long',year:'numeric',month:'long',day:'numeric'};
+        // setInterval(() =>{
+        //     a = new Date();
+        //     // new Date(a - (((9*60*60)+(30*60)) * 1000))
+        //     date = a.toLocaleDateString(undefined, timeoption);
+        //     time = a.getHours() +" : "+ a.getMinutes() +" : "+ a.getSeconds();
+        //     document.getElementById('time').innerHTML = time + "<br>On "+date;
+        // }, 1000);
+        window.onload = function(){
+            document.getElementById('city').innerHTML = "India"
+            refresh();
+        }
+
+        function refresh(){
+            var ref = 1000;
+            mytime = setTimeout('country()',ref)
+        }
+        let a,date,time,nd,d;
+        const option = {weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'numeric',minute:'numeric',second:'numeric'};
+        const dateoption = {weekday:'long',year:'numeric',month:'long',day:'numeric'};
+        var getDatetime = function zone(timezone){
+            option.timeZone = timezone;
+            a = new Date();
+            d = a.toLocaleDateString(undefined, option)
+            nd = new Date(d);
+            date = nd.toLocaleDateString(undefined,dateoption)
+            time = nd.getHours() +" : "+ nd.getMinutes() +" : "+ nd.getSeconds();
+            document.getElementById('time').innerHTML = time + "<br><br>On "+date;
+        }
+
+        function country(){
+            var cname = document.getElementById('change').value;
+            document.getElementById('city').innerHTML = cname;
+            if(cname == 'India'){
+                getDatetime('Asia/Kolkata');
+            }
+            else if(cname == 'London'){
+                getDatetime('Europe/London');
+            }
+            else if(cname == 'Canada'){
+                getDatetime('Canada/Central');
+            }
+            else if(cname == 'Australia'){
+                getDatetime('Australia/Sydney');
+            }
+            else if(cname == 'NewYork'){
+                getDatetime('America/New_York');
+            }
+            refresh();
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">Time Zone</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled text-white">Disabled</a>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="jumbotron">
+            <h1 class="display-4 pb-2">Hello, world!</h1>
+            <h3 class="display-6">Current Time in <span id="city"></span> is  <span id="time"></span></h3>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+                featured content or information.</p>
+            <hr class="my-4">
+            <p>We are here to show the time for different countries.</p>
+            <form action="">
+                <label>Country : </label>
+                <select class="btn btn-outline-primary" id="change" onchange=country()>
+                  <option value="India">India</option>
+                  <option value="London">London</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="NewYork">NewYork</option>
+                </select>
+                <!-- <input type="submit" class="btn btn-primary" onclick="submit()"> -->
+              </form>
+        </div>
+    </div>
+</body>
+</html>

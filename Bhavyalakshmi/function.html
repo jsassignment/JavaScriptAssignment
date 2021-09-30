@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Functions</title>
+    </head>
+    <body>
+        <h3 id="fun"></h3>
+        <script>
+            document.getElementById('fun').innerHTML = "Function experiments";
+            
+            function avg(a,b){
+                s = (a+b)/2;
+                return s;
+            }
+            console.log(avg(23,65))
+
+            function oddeven(n){
+                if(n%2 ==0){
+                    return n+" is even";
+                }else{
+                    return n+" is odd";
+                }
+            }
+            console.log(oddeven(6754))
+
+        </script>
+    </body>
+</html>
