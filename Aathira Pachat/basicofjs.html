@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <h2>JavaScript Window</h2>
+    <p id="demo"></p>
+    <p id="para"></p>
+    <script>
+
+        // Variables - Numbers
+        console.log("Variables Operators");
+        var x;                  // works anywhere
+        let y;                 // works only on any particular block
+        x=5;
+        y=10;
+        r = 5.125;
+        console.log("x:",x,"y:",y,"r:",r);
+        let z= x+y;
+        console.log("Sum: ",z);
+
+        //Strings
+        console.log("Strings");
+        s = 'This is a string in single quote';
+        console.log(s);
+        str = "This is another string in double quotes";
+        console.log(str);
+
+        //Constants
+        console.log("Constants");
+        const c = 10;
+        console.log(c);
+
+        //Operators - Arithmetic
+        console.log("Arithemetic Operators");
+        console.log("Addition:",x+y);
+        console.log("Subtraction:",y-x);
+        console.log("Multiplication:",x*y);
+        console.log("Division:",x/y);
+        console.log("Modulus:",x%y);
+
+        //Concatenate strings
+        console.log("Concatenate Strings");
+        var fname = "Liya";
+        var lname ="Mathew";
+        var fullname = fname +' '+ lname;
+        console.log(fullname);
+
+        //Objects
+        console.log("Objects");
+        var marks = {
+            "liya":80,
+            "anu":70,
+            "manu":55.57,
+        };
+        console.log(marks);
+        
+        //Boolean
+        console.log("Boolean Operators");
+        a = true;
+        b = false;
+        console.log(a,b);
+
+        //Null & Undefined
+        console.log("Null & undefined");
+        n=null;
+        var und = undefined;
+        console.log(n);
+        console.log(und);
+
+        //Arrays
+        console.log("Arrays");
+        var arr = [1,2,3,4,5];
+        var sarr = ['Aathi','nikki','bavya','Anu'];
+        console.log(arr);
+        console.log('Array length:',arr.length);
+        console.log(sarr);
+        console.log('Array length:',sarr.length);
+
+        const g = []
+        g[0] = "python"
+        g[1] = 'java'
+        g[2] = 'js'
+        console.log(g);
+        
+        //Comparison operators
+        console.log("Comparison Operators");
+        var v = 10;
+        var h = 20;
+        console.log(v == h);
+        console.log(v >= h);
+        console.log(v <= h);
+        console.log(v < h);
+        console.log(v > h);
+
+        //Logical operators
+        console.log("Logical Operators");
+        console.log('t & t :', true && true);
+        console.log('t & f :', true && false);
+        console.log('f & f :', false && false);
+
+        console.log('t or t :', true || true);
+        console.log('t or f :', true || false);
+        console.log('f or f :', false || false);
+
+        console.log('Logical not of true :', !(true));
+        console.log('Logical not of false :', !(false));
+    
+        //Functions
+        console.log("Functions");
+        function avg(r,u){
+            j = (r + u)/2;
+            return j;
+        }
+        console.log('Function Average:',avg(4,2));
+        
+        function addition(o,p){
+            e = (o + p);
+            return e;
+        }
+        console.log('Function Addition:',addition(4,2));
+    
+        //Conditional statements - if
+        console.log("Conditional Statements");
+
+        var age = 7;
+        if(age>18){
+            console.log("Age is greater than 18");
+        }
+
+        //if-else
+        if(age>=18){
+            console.log("Age is greater than or equal to 18");
+        }
+        else{
+            console.log("Age is invalid");
+        }
+
+        //if-else if- else : if else ladder
+        if(age > 18){
+            console.log("Age is greater than 18");
+        }
+        else if (age < 18){
+            console.log("Age is less than 18");
+        }
+        else if (age = 18){
+            console.log("Age is equal to 18");
+        }
+        else{
+            console.log("No conditions met");
+        }
+
+        //DOM Manipulations - Document object model
+        document.getElementById("demo").innerHTML = "Welcome to my java script page !!";
+        document.getElementById("para").innerHTML = "This is my paragraph !!";
+    
+        var d = new Date();
+        console.log(d.getDay())
+        var weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+        var n = weekday[d.getDay()];
+        console.log(n)
+    </script>
+    
+</body>
+</html>
