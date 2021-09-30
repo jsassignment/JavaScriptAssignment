@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script>
+       
+        const options={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+        const dateopt={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+        const timeopt={hour:'numeric',minute:'numeric',second:'numeric'};
+
+        var getTime=function timeValue(timezone){
+            options.timeZone=timezone;
+            current=new Date();
+            date=current.toLocaleDateString(undefined,options);
+            newdate= new Date(date);
+            dateformat=newdate.toLocaleDateString(undefined,dateopt);
+            timeformat=newdate.toLocaleDateString(undefined,timeopt);
+            document.getElementById("time").innerHTML=timeformat + "<br>on" +dateformat;
+        }
+        
+       function countryChange(){
+           var countryname=document.getElementById("countries").value;
+
+           if(countryname=="India"){
+               document.getElementById("country").innerHTML=countryname;
+               getTime("Asia/Kolkata");
+           }
+       }
+    </script>
+</head>
+<body>
+    <div class="container my-4">
+        <div class="jumbotron">
+            <h1 class="display-4"> Current time is:<span id="time"></span></h1>
+            <p class="lead">Information</p>
+            <hr class="my-4">
+            <p>We are here to show you the time</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <select class="form-select" id="countries" aria-label="Select"
+                    onchange="countryChange()">
+                    <option selected>Select country</option>
+                    <option value="India">India</option>
+                    <option value="London">London</option>
+                </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
